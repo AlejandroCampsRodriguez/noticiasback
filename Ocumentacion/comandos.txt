@@ -1,0 +1,7 @@
+C:\\Python314\\python.exe -m uvicorn main:app --reload
+
+
+
+
+ale@DESKTOP-KJH2S2I MINGW64 /f/PERSONAL/RED/DEVELOPEP/PROYECTOS/022_Noticias (main)
+$git branch -m main
