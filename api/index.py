@@ -3,7 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-# CORS para React
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -12,7 +11,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Datos simulados (luego se conectan APIs reales)
 WEB_SOURCES = [
     {
         "id": "web-1",
@@ -29,17 +27,12 @@ WEB_SOURCES = [
         "url": "https://midu.dev"
     },
     {
-
- "id": "web-3",
+        "id": "web-3",
         "type": "web",
         "title": "Mobile y tecnología",
         "description": "Noticias sobre desarrollo móvil",
         "url": "https://www.reactnative.dev/blog"
-
     }
-       
-
-
 ]
 
 YOUTUBE_SOURCES = [
@@ -61,17 +54,9 @@ YOUTUBE_SOURCES = [
 def search(q: str = Query(..., min_length=1)):
     query = q.lower()
 
-    web_results = [
-        item for item in WEB_SOURCES
-        if query in item["title"].lower()
-    ]
+    web_results = [item for item in WEB_SOURCES if query in item["title"].lower()]
+    yt_results = [item for item in YOUTUBE_SOURCES if query in item["title"].lower()]
 
-    yt_results = [
-        item for item in YOUTUBE_SOURCES
-        if query in item["title"].lower()
-    ]
-
-    # Mezclados (tab Todo)
     results = web_results + yt_results
 
     return {
