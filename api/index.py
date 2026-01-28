@@ -31,5 +31,5 @@ def search(q: str = Query(..., min_length=1)):
     results = web_results + yt_results
     return {"query": q, "count": len(results), "results": results}
 
-# 🔑 Necesario para Vercel Serverless
+# Necesario para Vercel Serverless
 handler = Mangum(app)
